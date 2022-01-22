@@ -1,0 +1,28 @@
+<h1>Listing Jokes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for joke <- @jokes do %>
+    <tr>
+      <td><%= joke.title %></td>
+      <td><%= joke.body %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.joke_path(@conn, :show, joke) %></span>
+        <span><%= link "Edit", to: Routes.joke_path(@conn, :edit, joke), up_target: ".edit-form", up_layer: "new" %></span>
+        <span><%= link "Delete", to: Routes.joke_path(@conn, :delete, joke), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Joke", to: Routes.joke_path(@conn, :new), up_target: ".edit-form", up_layer: "new" %></span>

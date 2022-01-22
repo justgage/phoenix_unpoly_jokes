@@ -1,0 +1,18 @@
+<h1>Show Joke</h1>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @joke.title %>
+  </li>
+
+  <li>
+    <strong>Body:</strong>
+    <%= @joke.body %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.joke_path(@conn, :edit, @joke) %></span> |
+<span><%= link "Back", to: Routes.joke_path(@conn, :index) %></span>

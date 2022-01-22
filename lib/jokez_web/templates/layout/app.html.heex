@@ -1,5 +1,12 @@
 <main class="container">
   <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
   <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-  <%= @inner_content %>
+<div class="layout">
+  <ol class="sidebar">
+  <%= for joke <- JokezWeb.JokeView.list_jokes() do %>
+        <li><%= link joke.title, to: Routes.joke_path(@conn, :show, joke) %></li>
+  <% end %>
+    </ol>
+  <div class="app"><%= @inner_content %></div>
+</div>
 </main>
